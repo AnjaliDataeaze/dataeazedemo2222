@@ -1,4 +1,4 @@
 [core]
     remote = data
 ['remote "data"']
-    url = /home/ubuntu/remote/lexico
+    url = /home/ubuntu/remote/dzuni
