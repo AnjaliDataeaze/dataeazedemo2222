@@ -269,13 +269,12 @@ class pull(APIView):
         if request.method == 'POST':
             data = json.loads(request.body)
             gui = GUI()
-            user_id = gui.authenticate_user(data['username'])
-            corpus_id = gui.corpus_id(data['corpus_name'])
-            access_type = "write"
-            if gui.authorize_user(user_id, corpus_id, access_type) == 1:
-                return gui.pull(data['folder_name'])
+            response = gui.pull(data)
+            if response == 1:
+                return JsonResponse("success", safe=False)
             else:
-                return "ACCESS DENY"
+                return JsonResponse("ACCESS DENY", safe=False)
+
 #-------------------------------------------------------------------------------------
 #****************************************************************************
 
